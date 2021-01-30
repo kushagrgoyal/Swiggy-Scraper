@@ -1,0 +1,87 @@
+,Restaurant,Cuisine,Ratings,Delivery_time_mins,Cost_for_two
+0,Behrouz Biryani,"Biryani, Mughlai",4.1,44,600
+1,Faasos,"Fast Food, North Indian, Biryani, Desserts",4.1,46,200
+2,LunchBox,"North Indian, Desserts, Biryani",3.9,46,200
+3,Indiana Burgers,"American, Fast Food, Beverages, Healthy Food",4.1,46,150
+4,Ovenstory Pizza,"Pizzas, Italian",4.0,52,600
+5,The Good Bowl,"North Indian, Biryani, Asian, Pastas, Desserts",4.0,40,400
+6,The Biryani Life,"Biryani, Mughlai, Indian",3.6,44,250
+7,Firangi Bake,"Italian, Mexican, Pastas",4.0,44,400
+8,Immunity Booster Meals by Lunchbox,"North Indian, Desserts, Biryani",--,35,200
+9,SLAY Coffee,"Beverages, Cafe, Desserts",4.5,40,200
+10,Sweet Truth,"Bakery, Desserts, Ice Cream",4.1,41,200
+11,McDonald's Gourmet Burger Collection,"American, Continental, Fast Food, Desserts, Beverages",4.1,47,600
+12,WarmOven Cake & Desserts,"Bakery, Desserts, Ice Cream",4.1,44,200
+13,Kaati Zone Rolls and Wraps,"Fast Food, Beverages, Bengali, Biryani, Indian, North Indian, Snacks, Street Foo...",3.9,45,150
+14,Behrouz Biryani,"Biryani, Mughlai",4.1,44,600
+15,Faasos,"Fast Food, North Indian, Biryani, Desserts",4.1,46,200
+16,LunchBox,"North Indian, Desserts, Biryani",3.9,46,200
+17,Indiana Burgers,"American, Fast Food, Beverages, Healthy Food",4.1,46,150
+18,Ovenstory Pizza,"Pizzas, Italian",4.0,52,600
+19,The Good Bowl,"North Indian, Biryani, Asian, Pastas, Desserts",4.0,40,400
+20,The Biryani Life,"Biryani, Mughlai, Indian",3.6,44,250
+21,Firangi Bake,"Italian, Mexican, Pastas",4.0,44,400
+22,Immunity Booster Meals by Lunchbox,"North Indian, Desserts, Biryani",--,35,200
+23,SLAY Coffee,"Beverages, Cafe, Desserts",4.5,40,200
+24,Sweet Truth,"Bakery, Desserts, Ice Cream",4.1,41,200
+25,McDonald's Gourmet Burger Collection,"American, Continental, Fast Food, Desserts, Beverages",4.1,47,600
+26,WarmOven Cake & Desserts,"Bakery, Desserts, Ice Cream",4.1,44,200
+27,Kaati Zone Rolls and Wraps,"Fast Food, Beverages, Bengali, Biryani, Indian, North Indian, Snacks, Street Foo...",3.9,45,150
+28,Cupcake Bliss Cakes & Desserts,"Desserts, Ice Cream, Bakery, American, British, Combo, Snacks",3.8,45,140
+29,7 Plates,"Biryani, Chinese, Desserts",4.2,41,450
+30,The Dessert Zone,"Desserts, Bakery, Ice Cream, American, British, Combo, Snacks, Beverages",3.9,55,300
+31,Hotel Empire,"North Indian, Chinese, South Indian, Biryani",3.9,50,450
+32,Chinese BAE,"Chinese, Thai",3.8,58,450
+33,Momoz,Chinese,4.0,47,450
+34,IceBreakers Ice Creams,"Ice Cream, Desserts, Beverages, Snacks",3.9,43,300
+35,Five Star Chicken,Fast Food,3.4,52,200
+36,HUNGRY CHANG,"Chinese, Pan-Asian, Fast Food, Combo",3.3,45,280
+37,The Hyderbadi Chef,"North Indian, Chinese",3.7,56,400
+38,Behrouz Biryani,"Biryani, Mughlai",4.1,44,600
+39,Faasos,"Fast Food, North Indian, Biryani, Desserts",4.1,46,200
+40,LunchBox,"North Indian, Desserts, Biryani",3.9,46,200
+41,Indiana Burgers,"American, Fast Food, Beverages, Healthy Food",4.1,46,150
+42,Ovenstory Pizza,"Pizzas, Italian",4.0,52,600
+43,The Good Bowl,"North Indian, Biryani, Asian, Pastas, Desserts",4.0,40,400
+44,The Biryani Life,"Biryani, Mughlai, Indian",3.6,44,250
+45,Firangi Bake,"Italian, Mexican, Pastas",4.0,44,400
+46,Immunity Booster Meals by Lunchbox,"North Indian, Desserts, Biryani",--,35,200
+47,SLAY Coffee,"Beverages, Cafe, Desserts",4.5,40,200
+48,Sweet Truth,"Bakery, Desserts, Ice Cream",4.1,41,200
+49,McDonald's Gourmet Burger Collection,"American, Continental, Fast Food, Desserts, Beverages",4.1,47,600
+50,WarmOven Cake & Desserts,"Bakery, Desserts, Ice Cream",4.1,44,200
+51,Kaati Zone Rolls and Wraps,"Fast Food, Beverages, Bengali, Biryani, Indian, North Indian, Snacks, Street Foo...",3.9,45,150
+52,Cupcake Bliss Cakes & Desserts,"Desserts, Ice Cream, Bakery, American, British, Combo, Snacks",3.8,45,140
+53,7 Plates,"Biryani, Chinese, Desserts",4.2,41,450
+54,The Dessert Zone,"Desserts, Bakery, Ice Cream, American, British, Combo, Snacks, Beverages",3.9,55,300
+55,Hotel Empire,"North Indian, Chinese, South Indian, Biryani",3.9,50,450
+56,Chinese BAE,"Chinese, Thai",3.8,58,450
+57,Momoz,Chinese,4.0,47,450
+58,IceBreakers Ice Creams,"Ice Cream, Desserts, Beverages, Snacks",3.9,43,300
+59,Five Star Chicken,Fast Food,3.4,52,200
+60,HUNGRY CHANG,"Chinese, Pan-Asian, Fast Food, Combo",3.3,45,280
+61,The Hyderbadi Chef,"North Indian, Chinese",3.7,56,400
+62,Behrouz Biryani,"Biryani, Mughlai",4.1,44,600
+63,Faasos,"Fast Food, North Indian, Biryani, Desserts",4.1,46,200
+64,LunchBox,"North Indian, Desserts, Biryani",3.9,46,200
+65,Indiana Burgers,"American, Fast Food, Beverages, Healthy Food",4.1,46,150
+66,Ovenstory Pizza,"Pizzas, Italian",4.0,52,600
+67,The Good Bowl,"North Indian, Biryani, Asian, Pastas, Desserts",4.0,40,400
+68,The Biryani Life,"Biryani, Mughlai, Indian",3.6,44,250
+69,Firangi Bake,"Italian, Mexican, Pastas",4.0,44,400
+70,Immunity Booster Meals by Lunchbox,"North Indian, Desserts, Biryani",--,35,200
+71,SLAY Coffee,"Beverages, Cafe, Desserts",4.5,40,200
+72,Sweet Truth,"Bakery, Desserts, Ice Cream",4.1,41,200
+73,McDonald's Gourmet Burger Collection,"American, Continental, Fast Food, Desserts, Beverages",4.1,47,600
+74,WarmOven Cake & Desserts,"Bakery, Desserts, Ice Cream",4.1,44,200
+75,Kaati Zone Rolls and Wraps,"Fast Food, Beverages, Bengali, Biryani, Indian, North Indian, Snacks, Street Foo...",3.9,45,150
+76,Cupcake Bliss Cakes & Desserts,"Desserts, Ice Cream, Bakery, American, British, Combo, Snacks",3.8,45,140
+77,7 Plates,"Biryani, Chinese, Desserts",4.2,41,450
+78,The Dessert Zone,"Desserts, Bakery, Ice Cream, American, British, Combo, Snacks, Beverages",3.9,55,300
+79,Hotel Empire,"North Indian, Chinese, South Indian, Biryani",3.9,50,450
+80,Chinese BAE,"Chinese, Thai",3.8,58,450
+81,Momoz,Chinese,4.0,47,450
+82,IceBreakers Ice Creams,"Ice Cream, Desserts, Beverages, Snacks",3.9,43,300
+83,Five Star Chicken,Fast Food,3.4,52,200
+84,HUNGRY CHANG,"Chinese, Pan-Asian, Fast Food, Combo",3.3,45,280
+85,The Hyderbadi Chef,"North Indian, Chinese",3.7,56,400
