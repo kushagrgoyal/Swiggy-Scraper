@@ -52,7 +52,7 @@ try:
     time.sleep(5)
     
     scroll(driver, 2) # Infinite Scrolling
-    driver.execute_script('window.scrollTo(0, 0)')
+    # driver.execute_script('window.scrollTo(0, 0)')
     
     # Restaurant Names
     rest_names = driver.find_elements_by_class_name('nA6kb')

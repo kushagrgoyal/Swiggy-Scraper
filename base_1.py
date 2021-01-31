@@ -9,6 +9,7 @@ import time
 # User Inputs
 LOCATION = 'kothanur'
 PATH = './chromedriver'
+MAX_TIME = 120
 
 driver = webdriver.Chrome(PATH)
 rest_names = []
@@ -20,18 +21,21 @@ cost_for_two = []
 
 def scroll(driver, timeout):
     scroll_pause_time = timeout
+    
+    rest_names, c_names, ratings, del_times, cost_for_two = extract_data(driver)
 
     # Get scroll height
     last_height = driver.execute_script("return document.body.scrollHeight")
 
+    start_time = time.time()
     while True:
-        # Extract data
-        r, c, ra, dt, ct = extract_data(driver)
-        rest_names.extend(r)
-        c_names.extend(c)
-        ratings.extend(ra)
-        del_times.extend(dt)
-        cost_for_two.extend(ct)
+        # # Extract data
+        # r, c, ra, dt, ct = extract_data(driver)
+        # rest_names.extend(r)
+        # c_names.extend(c)
+        # ratings.extend(ra)
+        # del_times.extend(dt)
+        # cost_for_two.extend(ct)
         
         # Scroll down to bottom
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
@@ -45,6 +49,8 @@ def scroll(driver, timeout):
             # If heights are the same it will exit the function
             break
         last_height = new_height
+        if time.time() - start_time >= MAX_TIME:
+            break
     
     print('Data Collected')
 
@@ -109,6 +115,15 @@ def convert_to_csv(r, c, ra, dt, ct):
 try:
     start_with_location(driver)    
     scroll(driver, 2)
+
+    # Extract data
+    r, c, ra, dt, ct = extract_data(driver)
+    rest_names.extend(r)
+    c_names.extend(c)
+    ratings.extend(ra)
+    del_times.extend(dt)
+    cost_for_two.extend(ct)
+
     convert_to_csv(rest_names, c_names, ratings, del_times, cost_for_two)
 finally:
     driver.quit()
