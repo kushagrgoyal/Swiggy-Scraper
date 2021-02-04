@@ -22,6 +22,7 @@ cost_for_two = []
 def scroll(driver, timeout):
     scroll_pause_time = timeout
     
+    # This line is needed to have the first 31 restaurants loaded before infinite scrolling starts
     rest_names, c_names, ratings, del_times, cost_for_two = extract_data(driver)
 
     # Get scroll height
