@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -27,12 +28,12 @@ class Swiggy_scraper():
     
     def scroll(self, rest_names, c_names, ratings, del_times, cost_for_two):
         scroll_pause_time = self.timeout
-    
-        # This line is needed to have the first 31 restaurants loaded before infinite scrolling starts
-        rest_names, c_names, ratings, del_times, cost_for_two = self.extract_data()
-
+        time.sleep(3)
         # Get scroll height
         last_height = self.driver.execute_script("return document.body.scrollHeight")
+
+        # This line is needed to have the first 31 restaurants loaded before infinite scrolling starts
+        rest_names, c_names, ratings, del_times, cost_for_two = self.extract_data()
 
         start_time = time.time()
         while True:            
@@ -88,6 +89,36 @@ class Swiggy_scraper():
     def convert_to_csv(self, r, c, ra, dt, ct, save_path):
         data = {'Restaurant':r, 'Cuisine':c, 'Ratings':ra, 'Delivery_time_mins':dt, 'Cost_for_two':ct}
         data = pd.DataFrame(data)
+        
+        # Fixing dtypes and replacing missing values
         data.Cost_for_two = [i[1:] for i in data.Cost_for_two.values]
+        data.Ratings = data.Ratings.replace('--', np.nan)
+        data = data.dropna()
+        data.reset_index(inplace = True, drop = True)
+        cols = ['Ratings', 'Delivery_time_mins']
+        data[cols] = data[cols].astype('float32')
+        data['Cost_for_two'] = data['Cost_for_two'].astype('int32')
+        
+        # Saving the .csv file
         data.to_csv(save_path)
         print('Data saved as a .csv file')
+    
+    def scrape_and_save(self, save_path):
+        rest_names = []
+        c_names = []
+        ratings = []
+        del_times = []
+        cost_for_two = []
+
+        self.start_with_location()
+        self.scroll(rest_names, c_names, ratings, del_times, cost_for_two)
+
+        # Extract Data
+        r, c, ra, dt, ct = self.extract_data()
+        rest_names.extend(r)
+        c_names.extend(c)
+        ratings.extend(ra)
+        del_times.extend(dt)
+        cost_for_two.extend(ct)
+
+        self.convert_to_csv(rest_names, c_names, ratings, del_times, cost_for_two, save_path)
