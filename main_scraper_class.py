@@ -13,6 +13,11 @@ class Swiggy_scraper():
         self.location = location
         self.timeout = timeout
         self.max_time_scroll = max_time_scroll
+        self.rest_names = []
+        self.c_names = []
+        self.ratings = []
+        self.del_times = []
+        self.cost_for_two = []
     
     def start_with_location(self):
         self.driver.get('https://swiggy.com/')
@@ -26,14 +31,11 @@ class Swiggy_scraper():
 
         time.sleep(5)
     
-    def scroll(self, rest_names, c_names, ratings, del_times, cost_for_two):
+    def scroll(self):
         scroll_pause_time = self.timeout
         time.sleep(3)
         # Get scroll height
         last_height = self.driver.execute_script("return document.body.scrollHeight")
-
-        # This line is needed to have the first 31 restaurants loaded before infinite scrolling starts
-        rest_names, c_names, ratings, del_times, cost_for_two = self.extract_data()
 
         start_time = time.time()
         while True:            
@@ -49,24 +51,33 @@ class Swiggy_scraper():
                 # If heights are the same it will exit the function
                 break
             last_height = new_height
+            
             if time.time() - start_time >= self.max_time_scroll:
                 break
     
-    def extract_data(self):
+    def extract_data(self, main = None):
         # Restaurant Names
-        rest_names = self.driver.find_elements_by_class_name('nA6kb')
+        if main != None:
+            rest_names = main.find_elements_by_class_name('nA6kb')
+        else:
+            rest_names = self.driver.find_elements_by_class_name('nA6kb')
         rest_names = [i.text for i in rest_names]
 
         # Cuisine Type
-        c_names = []
-        c_names = self.driver.find_elements_by_class_name('_1gURR')
+        if main != None:
+            c_names = main.find_elements_by_class_name('_1gURR')
+        else:
+            c_names = self.driver.find_elements_by_class_name('_1gURR')
         c_names = [i.text for i in c_names]
 
         # Rating, Delivery Times and Cost for Two
         ratings = []
         del_times = []
         cost_for_two = []
-        extract_ratings = self.driver.find_elements_by_class_name('_3Mn31')
+        if main != None:
+            extract_ratings = main.find_elements_by_class_name('_3Mn31')
+        else:
+            extract_ratings = self.driver.find_elements_by_class_name('_3Mn31')
         for e_r in extract_ratings[:-1]:            
             info = e_r.find_elements_by_tag_name('div')
             info = [i.text for i in info]
@@ -86,8 +97,8 @@ class Swiggy_scraper():
                 c += 1
         return c
     
-    def convert_to_csv(self, r, c, ra, dt, ct, save_path):
-        data = {'Restaurant':r, 'Cuisine':c, 'Ratings':ra, 'Delivery_time_mins':dt, 'Cost_for_two':ct}
+    def convert_to_csv(self, save_path):
+        data = {'Restaurant':self.rest_names, 'Cuisine':self.c_names, 'Ratings':self.ratings, 'Delivery_time_mins':self.del_times, 'Cost_for_two':self.cost_for_two}
         data = pd.DataFrame(data)
         
         # Fixing dtypes and replacing missing values
@@ -95,30 +106,40 @@ class Swiggy_scraper():
         data.Ratings = data.Ratings.replace('--', np.nan)
         data = data.dropna()
         data.reset_index(inplace = True, drop = True)
-        cols = ['Ratings', 'Delivery_time_mins']
-        data[cols] = data[cols].astype('float32')
-        data['Cost_for_two'] = data['Cost_for_two'].astype('int32')
+        # data['Ratings'] = data['Ratings'].astype('float32')
+
+        # cols = ['Delivery_time_mins', 'Cost_for_two']
+        # data[cols] = data[cols].astype('int32')
         
         # Saving the .csv file
         data.to_csv(save_path)
         print('Data saved as a .csv file')
-    
-    def scrape_and_save(self, save_path):
-        rest_names = []
-        c_names = []
-        ratings = []
-        del_times = []
-        cost_for_two = []
 
+    def check_all_restaurants(self):
+        # This is a function to check if "All Restaurants" button exists or not
+        try:
+            all_rests = WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME, '_2GhU5')))
+            print('All Restaurants link exists')
+            return all_rests
+        except:
+            print('No All Restaurants link')
+            return False
+
+    def scrape_and_save(self, save_path):
         self.start_with_location()
-        self.scroll(rest_names, c_names, ratings, del_times, cost_for_two)
+        all_restaurants = self.check_all_restaurants()
+        self.scroll()
 
         # Extract Data
-        r, c, ra, dt, ct = self.extract_data()
-        rest_names.extend(r)
-        c_names.extend(c)
-        ratings.extend(ra)
-        del_times.extend(dt)
-        cost_for_two.extend(ct)
+        if all_restaurants == False:                    
+            r, c, ra, dt, ct = self.extract_data()
+        else:
+            r, c, ra, dt, ct = self.extract_data(all_restaurants)
+        self.rest_names.extend(r)
+        self.c_names.extend(c)
+        self.ratings.extend(ra)
+        self.del_times.extend(dt)
+        self.cost_for_two.extend(ct)
 
-        self.convert_to_csv(rest_names, c_names, ratings, del_times, cost_for_two, save_path)
+        self.convert_to_csv(save_path)
+

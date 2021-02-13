@@ -4,7 +4,7 @@ import streamlit as st
 # User Inputs
 LOCATION = 'kothanur'
 PATH = './chromedriver'
-TIMEOUT = 2
+TIMEOUT = 4
 MAX_TIME = 120
 SAVE_PATH = 'Swiggy_scraped.csv'
 
