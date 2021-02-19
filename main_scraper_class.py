@@ -106,10 +106,11 @@ class Swiggy_scraper():
         data.Ratings = data.Ratings.replace('--', np.nan)
         data = data.dropna()
         data.reset_index(inplace = True, drop = True)
-        # data['Ratings'] = data['Ratings'].astype('float32')
+        data.drop('Unnamed: 0', axis = 1, inplace = True)
+        data['Ratings'] = data['Ratings'].astype('float32')
 
-        # cols = ['Delivery_time_mins', 'Cost_for_two']
-        # data[cols] = data[cols].astype('int32')
+        cols = ['Delivery_time_mins', 'Cost_for_two']
+        data[cols] = data[cols].astype('int32')
         
         # Saving the .csv file
         data.to_csv(save_path)
